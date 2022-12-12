@@ -1,14 +1,21 @@
 <%- include("partials/header") %> 
-<h1 class="text-4xl py-4">Home</h1>
+<h1 class="text-4xl py-4  ">Home</h1>
 <p><%=  startingContent %> </p>
 
 
    
    <%   posts.forEach(function(post){   %>
-       <h1 class="text-4xl py-4"><%= post.title %></h1>
-       <p>
-        <%= post.content.substring(0,100) + " ..."%>
-        <a href="/posts/<%=post._id%> ">Read More</a>
-    </p>
-       <%    }) %>
+    
+    <div class="border-0 hover:bg-white my-4 shadow-md shadow-gray  "> 
+    <h1 class="text-4xl py-4  mx-4"><%= post.title %></h1>
+        <p>
+            <%= post.content.substring(0,100) + " ..."%>
+            <a href="/posts/<%=post._id%>  " class="my-2 mx-4 shadow-sm shadow-black  hover:shadow-inner hover:shadow-gray-400 cursor-pointer  ">Read More</a>
+        </p>
+        <form action="/" method="post">
+
+            <a href="/delete/<%=post._id%> " class="cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-sm hover:shadow-inner hover:shadow-gray-400  ">delete</a>
+        </form>
+    </div>
+        <%    }) %>
 <%- include("partials/footer") %> 
