@@ -1,21 +1,30 @@
 <%- include("partials/header") %> 
-<h1 class="text-4xl py-4  ">Home</h1>
-<p><%=  startingContent %> </p>
 
-
-   
-   <%   posts.forEach(function(post){   %>
+<h1 class="text-4xl py-4 text-center font-sans text-6xl font-semibold bg-[#ecfdf5] ">HOME</h1>
+<div class="flex flex-wrap justify-center bg-[#ecfdf5]">
     
-    <div class="border-0 hover:bg-white my-4 shadow-md shadow-gray  "> 
-    <h1 class="text-4xl py-4  mx-4"><%= post.title %></h1>
-        <p>
-            <%= post.content.substring(0,100) + " ..."%>
-            <a href="/posts/<%=post._id%>  " class="my-2 mx-4 shadow-sm shadow-black  hover:shadow-inner hover:shadow-gray-400 cursor-pointer  ">Read More</a>
-        </p>
-        <form action="/" method="post">
+    
+    
+    
+    <%   posts.forEach(function(post){   %>
+        
+        <div class="border-0 hover:bg-white my-4 shadow-md shadow-gray mx-16  max-w-sm p-4 "> 
+            <div class="">
 
-            <a href="/delete/<%=post._id%> " class="cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-sm hover:shadow-inner hover:shadow-gray-400  ">delete</a>
-        </form>
-    </div>
+                <h1 class="text-4xl py-4  mx-4 font-medium"><%= post.title %></h1>
+                <p class="mx-4 my-6 font-normal ">
+                    <%= post.content.substring(0,200) + " ..."%>
+                    <a href="/posts/<%=post._id%>  " class="cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">Read More</a>
+                </p>
+            </div>
+            <div class="flex py-2">
+                
+                <form  action="/delete/<%=post._id%>"  method="POST" >
+                    <button type="submit"   name="del"   class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1  ">delete</button>
+                </form>
+                <button type="submit"   class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">update</button>
+            </div>
+        </div>
         <%    }) %>
+    </div>
 <%- include("partials/footer") %> 

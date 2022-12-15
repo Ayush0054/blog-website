@@ -75,19 +75,24 @@ app.get("/posts/:postId", function(req, res){
    });
    
 });
-app.post("/delete/:postId", async function(req, res){
+
+
+   app.post("/delete/:postId", function(req, res){
    
-   const requestedPostId = req.params.postId;
-   
-   Post.findByIdAndRemove({_id: requestedPostId}, function(err){
-      post.save(function(err){
-         if (!err){
-            res.redirect("home");
-         }
+      // const check = req.params.del;
+      const requestedPostId = req.params.postId;
+      Post.findByIdAndRemove({_id: requestedPostId}, function(err){
+         if(!err){
+            console.log("successfully deleted");
+            res.redirect("/");
+          }
+         });
       });
-   });
-   
-});
+
+// app.delete("/posts/:postId",async function(req, res){ 
+//   await Post.findByIdAndRemove(req.params.postId)
+//    res.redirect("/")   
+// })
 
 // app.get("/delete", function(req,res){
 //    res.render("home" );
