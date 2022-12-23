@@ -1,4 +1,6 @@
 # blog-website
 blog website made with node ,express , tailwind ,ejs
 
-![blog ui](https://user-images.githubusercontent.com/97244608/209332060-04b67a8d-f8b8-447f-a900-cf44649c36b7.png)
+![blg 1](https://user-images.githubusercontent.com/97244608/209332147-293a4aa9-b333-4ac1-98a7-ecd63b4d753a.png)
+
+
