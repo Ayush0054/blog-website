@@ -1,0 +1,60 @@
+<%- include("partials/header") %> 
+
+<h1 class="text-4xl py-4 text-center font-medium bg-[#ecfdf5]">COMPOSE</h1>
+<div class="flex space-x-16 justify-center bg-[#ecfdf5]">
+  
+
+        
+    <form class="" action="/edit" method="POST">
+    
+    <div class="form-group mb-6">
+      <label  class="form-label inline-block mb-6 text-gray-700 ">Title</label>
+      <input type="text" name="postTitle" value="<%=title %>" class=" block
+      rounded-lg shadow-lg 
+      w-96
+      h-16
+      px-9
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      rounded
+      transition
+      ease-in-out
+      
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none " 
+      >
+    </div>
+    <div class="form-group mb-6">
+      <label " class="form-label inline-block mb-2 text-gray-700">POST</label>
+      <textarea
+      class="
+      rounded-lg shadow-lg 
+      block
+      h-60
+      w-96
+              px-3
+              py-1.5
+              text-base
+              font-normal
+              text-gray-700
+              bg-white bg-clip-padding
+              rounded
+              transition
+              ease-in-out
+              
+              focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+              
+              "
+              name="postBody"
+              rows="3"
+              
+              ><%= content %></textarea>
+            </div>
+            <button type="submit" name="button"  class="
+            cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">Publish</button>
+          </form>
+         
+        </div>
+          <%- include("partials/footer") %> 

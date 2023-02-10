@@ -12,17 +12,20 @@
             <div class="">
 
                 <h1 class="text-4xl py-4  mx-4 font-medium"><%= post.title %></h1>
-                <p class="mx-4 my-6 font-normal ">
+                <p class="mx-4 my-6 font-normal break-words ">
                     <%= post.content.substring(0,200) + " ..."%>
-                    <a href="/posts/<%=post._id%>  " class="cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">Read More</a>
                 </p>
+                <a href="/posts/<%=post._id%>  " class="cursor-pointer my-2 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">Read More</a>
             </div>
             <div class="flex py-2">
                 
                 <form  action="/delete/<%=post._id%>"  method="POST" >
-                    <button type="submit"   name="del"   class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1  ">delete</button>
+                    <button type="submit"   name="del"   class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1  ">Delete</button>
                 </form>
-                <button type="submit"   class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">update</button>
+
+                <form action="/edit/<%=post._id%>" method="GET">
+                    <button type="submit"  class="cursor-pointer my-6 mx-4 shadow-sm shadow-black rounded-lg hover:shadow-inner hover:shadow-gray-400 p-1 ">Edit</button>
+                </form>
             </div>
         </div>
         <%    }) %>

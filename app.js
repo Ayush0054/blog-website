@@ -42,9 +42,11 @@ app.get("/", function(req,res){
  });
 
 
+
 app.get("/compose", function(req,res){
    res.render("compose" );
 })
+
 
 
 app.post("/compose", function(req, res){
@@ -62,6 +64,8 @@ app.post("/compose", function(req, res){
    });
 });
 
+
+
 app.get("/posts/:postId", function(req, res){
    
    const requestedPostId = req.params.postId;
@@ -77,10 +81,12 @@ app.get("/posts/:postId", function(req, res){
 });
 
 
+
+
    app.post("/delete/:postId", function(req, res){
    
       // const check = req.params.del;
-      const requestedPostId = req.params.postId;
+      const requestedPostId = req.params.postId;                                   //delete
       Post.findByIdAndRemove({_id: requestedPostId}, function(err){
          if(!err){
             console.log("successfully deleted");
@@ -89,6 +95,87 @@ app.get("/posts/:postId", function(req, res){
          });
       });
 
+ //////////////////////////////////
+   app.get("/edit/:postId", (req, res) => {
+      // let blog =  Post.findById(req.params.id);
+         const requestedpostId=  req.params.postId;
+         console.log(req.body);
+         Post.findById({
+           _id: requestedpostId
+         }, (err, post) => {
+           if (!err) {
+             res.render("edit", {
+               title: post.title,
+               content: post.content
+             });
+           }
+         });
+         
+       });
+
+  //this is to save
+// app.post("/:id", (req, res) => {
+//   const requestedId = req.params.id;
+//   console.log(req.body);
+//   Post.findByIdAndUpdate({
+//      _id: requestedId                   // Query Part
+//   },
+//   {
+//     $set: {
+//        title: req.body.title,           // Fields which we need to update
+//        content: req.body.content
+//     }
+//   },
+//   { 
+   //      new: true                          // option part ( new: true will provide you updated data in response )
+   //   },(err, post) => {
+      //     if (!err) {
+         //        console.log("xjklznk");
+         //       res.render("/:id", {
+            //          title: post.title,
+            //          content: post.content
+            //       });
+            //     } else{
+               //       console.log(err);
+               //     }
+               //   });
+            // });
+               
+               
+               
+
+  app.post('/edit/:postId',async (req, res) => {
+   const requestedPostId = req.body.postId; // <-- get the id from the form 
+ 
+   await Post.findByIdAndUpdate(requestedPostId , {
+        title: req.body.title,
+        content:req.body.content
+   }).catch(err => {
+          if (err){
+              console.log(err)
+          }else{
+             console.log("Post Updated successfully");
+             res.redirect("/");
+          }
+      })
+});
+
+
+
+
+
+
+
+// console.log("hiashkdf");
+      // app.get("posts/edit/:postId", function (req, res)  {
+      //    const requestedPostId = req.params.postId;
+      //    const article =  Post.findById({_id: requestedPostId}, function(err, post){
+      //       res.render("/compose", {
+      //          title: post.title,
+      //          content: post.content 
+      //       });
+      //    });
+      //  });
 // app.delete("/posts/:postId",async function(req, res){ 
 //   await Post.findByIdAndRemove(req.params.postId)
 //    res.redirect("/")   
